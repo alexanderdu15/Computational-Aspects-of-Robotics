@@ -20,13 +20,13 @@ def transform_is_valid(t, tolerance=1e-3):
     if t.shape != (4, 4) or not np.isrealobj(t):
         return False
     #check if the bottom row is [0, 0, 0, 1]
-    if not np.allclose(t[3,:], np.array([0, 0, 0, 1]), tolerance):
+    if not np.allclose(t[3,:], np.array([0, 0, 0, 1]), atol=tolerance):
         return False
     #check if the top left 3x3 has determinant 1
-    if not np.isclose(np.linalg.det(t[:3,:3]), 1, tolerance):
+    if not np.isclose(np.linalg.det(t[:3,:3]), 1, atol=tolerance):
         return False
     #check if the top left 3x3 is orthonormal
-    if not np.allclose(t[:3,:3]@t[:3,:3].T, np.eye(3), tolerance) or not np.allclose(t[:3,:3].T@t[:3,:3], np.eye(3), tolerance):
+    if not np.allclose(t[:3,:3]@t[:3,:3].T, np.eye(3), atol=tolerance) or not np.allclose(t[:3,:3].T@t[:3,:3], np.eye(3), atol=tolerance):
         return False
     #otherwise is a valid transform
     return True
