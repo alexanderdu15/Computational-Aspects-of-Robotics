@@ -1,3 +1,0 @@
-numpy==1.18.5
-opencv-python==4.3.0.38
-numba==0.50.1
